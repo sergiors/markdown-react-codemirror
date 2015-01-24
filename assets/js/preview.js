@@ -15,13 +15,19 @@ var App = App || {};
 
     render: function() {
       return (
-        e('div', {
-          className: 'preview scrollthis',
-          dangerouslySetInnerHTML: {
-            __html: converter.makeHtml(this.props.value)
-          },
-          ref: 'preview'
-        })
+        e('div', {className: 'preview',},
+          e('div', {className: 'floatingheader'},
+            e('small', null, 'Preview')
+          ),
+          e('div', {className: 'preview-content scrollthis', ref: 'preview'}, 
+            e('div', {
+              className: 'rendered-markdown',
+              dangerouslySetInnerHTML: {
+                __html: converter.makeHtml(this.props.value)
+              }
+            })
+          )
+        )
       )
     }
   });

@@ -18,13 +18,24 @@ var App = App || {};
       }.bind(this));
 
       editor.on('scroll', function(e) {
-        this.props.onScroll(e.getScrollInfo().top);
+        var editorViewport = e.getScrollInfo()
+          , previewViewport = document.getElementsByClassName('preview')[0]
+          , editorContent = document.getElementsByClassName('CodeMirror-sizer')[0]
+          , previewContent = document.getElementsByClassName('rendered-markdown')[0]
+          , editorHeight = editorContent.clientHeight - editorViewport.clientHeight
+          , previewHeight = previewContent.clientHeight - previewViewport.clientHeight
+          , ratio = previewHeight / editorHeight;
+
+        this.props.onScroll(editorViewport.top * ratio);
       }.bind(this));
     },
 
     render: function() {
       return (
-        e('div', {className: 'editor scrollthis'}, 
+        e('div', {className: 'editor scrollthis'},
+          e('div', {className: 'floatingheader'},
+            e('small', null, 'Markdown')
+          ), 
           e('textarea', {
             className: 'form-control',
             ref: 'editor'
