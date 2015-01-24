@@ -1,0 +1,22 @@
+{
+  "name": "react-markdown-codemirror",
+  "version": "0.0.1",
+  "authors": [
+    "Sérgio Rafael Siqueira <sergiorsiqueira9@gmail.com>"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "react": "~0.12.2",
+    "showdown": "https://github.com/showdownjs/showdown.git#~0.3.4",
+    "bootstrap": "~3.3.2",
+    "codemirror": "https://github.com/codemirror/CodeMirror.git#~4.12.0"
+  }
+}

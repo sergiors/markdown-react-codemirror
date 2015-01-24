@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ptbr">
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="bower_components/codemirror/lib/codemirror.css">
+    <style>
+        html, body {
+            height: 100%;
+        }
+        .scrollthis {
+            overflow: auto;
+            height: 100%;
+        }
+        .app {
+            position: relative;
+            height: 100%;
+        }
+        .editor, .preview {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 50%;
+        }
+        .editor {
+            left: 0;
+            border-right: 1px solid #edece4;
+            font-family: monospace;
+            font-size: 1.6rem;
+            color: #3c4043;
+            line-height: 1.56em;
+        }
+        .editor .CodeMirror-lines {
+            padding-top: 40px
+        }
+        .preview {
+            background-color: #fdfdfd;
+            right: 0;
+            word-break: break-word;
+            font-size: 1.7rem;
+            line-height: 1.5em;
+            padding: 40px 60px;
+            color: #3c4043;
+        }
+        .preview img {
+            display: block;
+            max-width: 100%;
+            margin: 1.6em auto;
+        }
+        .CodeMirror {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            height: auto;
+        }
+        .CodeMirror pre {
+            padding: 0 50px;
+        }
+        .cm-header-1 { font-size: 150%; }
+        .cm-header-2 { font-size: 130%; }
+        .cm-header-3 { font-size: 120%; }
+        .cm-header-4 { font-size: 110%; }
+        .cm-header-5 { font-size: 100%; }
+        .cm-header-6 { font-size: 90%; }
+    </style>
+</head>
+<body>
+    <script src="bower_components/react/react.min.js"></script>
+    <script src="bower_components/showdown/compressed/Showdown.min.js"></script>
+    <script src="bower_components/codemirror/lib/codemirror.js"></script>
+    <script src="bower_components/codemirror/mode/markdown/markdown.js"></script>
+    <script src="assets/js/preview.js"></script>
+    <script src="assets/js/markdown-editor.js"></script>
+    <script src="assets/js/bootstrap.js"></script>
+</body>
+</html>
