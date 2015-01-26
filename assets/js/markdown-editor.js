@@ -17,17 +17,19 @@ var App = App || {};
         this.props.onChange(editor.getValue());
       }.bind(this));
 
-      editor.on('scroll', function(e) {
-        var editorViewport = e.getScrollInfo()
-          , previewViewport = document.getElementsByClassName('preview')[0]
-          , editorContent = document.getElementsByClassName('CodeMirror-sizer')[0]
-          , previewContent = document.getElementsByClassName('rendered-markdown')[0]
-          , editorHeight = editorContent.clientHeight - editorViewport.clientHeight
-          , previewHeight = previewContent.clientHeight - previewViewport.clientHeight
-          , ratio = previewHeight / editorHeight;
+      editor.on('scroll', this.handleScroll);
+    },
 
-        this.props.onScroll(editorViewport.top * ratio);
-      }.bind(this));
+    handleScroll: function(e) {
+      var editorViewport = e.getScrollInfo()
+        , previewViewport = document.getElementsByClassName('preview')[0]
+        , editorContent = document.getElementsByClassName('CodeMirror-sizer')[0]
+        , previewContent = document.getElementsByClassName('rendered-markdown')[0]
+        , editorHeight = editorContent.clientHeight - editorViewport.clientHeight
+        , previewHeight = previewContent.clientHeight - previewViewport.clientHeight
+        , ratio = previewHeight / editorHeight;
+
+      this.props.syncScroll(editorViewport.top * ratio);
     },
 
     render: function() {

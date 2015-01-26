@@ -17,7 +17,9 @@ var App = App || {};
       return (
         e('div', {className: 'preview',},
           e('div', {className: 'floatingheader'},
-            e('small', null, 'Preview')
+            e('small', null, 'Preview',
+              e('span', {className: 'word-count'}, this.props.words + ' words')
+            )
           ),
           e('div', {className: 'preview-content scrollthis', ref: 'preview'}, 
             e('div', {

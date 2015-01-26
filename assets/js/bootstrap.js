@@ -11,6 +11,7 @@ var App = App || {};
     getInitialState: function() {
       return {
         value: '',
+        words: 0,
         scrollTol: 0
       }
     },
@@ -22,7 +23,7 @@ var App = App || {};
             e('div', null, 
               e(MarkdownEditor, {
                 onChange: this.handleChange,
-                onScroll: this.handleScroll
+                syncScroll: this.syncScroll
               }),
               e(Preview, this.state)
             )
@@ -31,16 +32,17 @@ var App = App || {};
       )
     },
 
-    handleScroll: function(scrollTop) {
+    handleChange: function(value) {
+      this.setState({
+        value: value,
+        words: value && value.match(/\S+/g).length || 0
+      })
+    },
+
+    syncScroll: function(scrollTop) {
       this.setState({
         scrollTop: scrollTop
       });
-    },
-
-    handleChange: function(value) {
-      this.setState({
-        value: value
-      })
     }
   });
 
